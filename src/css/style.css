@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo:wgth@400;500;700&display=swap');
+
+:root {
+    ---color-dark: rgb(14, 14, 14);
+    --color-dark2: rgb(32, 32, 32);
+    --color-dark3: rgb(22, 22, 22);
+    --color-white: #ffff;
+    --color-white2: #f0f0f0;
+    --color-b: #063940;
+    --color-b2: #195e63;
+    --color-b3: #3e838c;
+    --color-b4: #8ebdb6;
+    --color-b5: #ece1c3;
+    --color-green: rgb(103, 195, 88);
+    --color-green2: rgb(51, 149, 26);
+    --color-red: rgb(184, 40, 35);
+    --color-red2: rgb(146, 22, 17);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Exo', sans-serif;
+    background-color: var(--color-b);
+    color: var(--color-white2);
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+
+    background-color: var(--color-dark3);
+    border-radius: 2rem;
+    margin-top: 50px;
+    padding: 70px;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    font-style: oblique;
+    margin-top: 50px;
+    font-size: 2rem;
+}
+
+.content--add-items {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+#input-new-task, #btn-new-task {
+    border: none;
+    font-size: 1rem;
+    outline: none;
+    padding: 1rem;
+}
+
+#input-new-task {
+    width: 20rem;
+    border-radius: 1rem;
+}
+
+#btn-new-task {
+    background-color: var(--color-b2);
+    color: var(--color-b5);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    transition: .4s;
+}
+
+#btn-new-task:hover {
+    background-color: var(--color-b3);
+}
+
+#to-do-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0;
+}
+
+#to-do-list li {
+    list-style-type: none;
+    font-size: 1.4rem;
+    text-transform: capitalize;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#to-do-list li:hover {
+    background-color: var(--color-b2);
+    transition: .4s;
+    border-radius: 1rem;
+    padding-left: 1rem;
+}
+
+#btn-ok {
+    border: none;
+    background-color: var(--color-b4);
+    color: var(--color-b5);
+    padding: .4rem .8rem;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: .4s;
+}
+
+#btn-ok:hover {
+    background-color: var(--color-b3);
+}
+
+.ass {
+    font-size: 22px;
+    font-weight: bolder;
+    font-style: oblique;
+    color: var(--color-white2);
+    margin-top: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+ul{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+.menu-lateral {
+	position: fixed;
+	width: 80px;
+	top: 0;
+	right: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+}
+
+.menu-lateral ul {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+}
+
+.menu-lateral .icone {
+	width: 30px;
+	filter: invert(1);
+	transition: 0.3s ease-in-out;
+}
+
+.menu-lateral .icone:hover {
+	transform: scale(1.2);
+}
