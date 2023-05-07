@@ -1,3 +1,15 @@
-# TO-DO LIST
+# To-Do List
 
-TO-DO LIST com HTML, CSS e JavaScript
+![Visualização To-Do List](./src/images/to-do-list.png)
+
+To-Do List com HTML, CSS e JavaScript
+
+# Tecnologias usadas
+
+- HTML;
+- CSS;
+- JavaScript.
+
+# Observação
+
+O projeto ainda não está responsivo
