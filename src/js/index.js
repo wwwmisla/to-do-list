@@ -1,37 +1,39 @@
 /* 
-- Inserir tarefa - OK
-- Salvar tarefa - 
-- Deletar uma tarefa - 
-- Deletar todas as tarefas - 
-- Marcar como concluída - 
-- Editar - 
-- Limitar quantidade de tarefa -
-- Não pode repetir o nome - 
-- Não pode enviar vazio - 
-- Enviar pelo enter - 
-- Primeira letra da tarefa sempre em uppercase -
+- Inserir tarefa                               - OK
+- Salvar tarefa                                - OK
+- Deletar uma tarefa                           - 
+- Deletar todas as tarefas                     - 
+- Marcar como concluída                        - 
+- Editar                                       - 
+- Limitar quantidade de tarefa                 - 
+- Não pode repetir o nome                      - 
+- Não pode enviar vazio                        - OK
+- Enviar pelo enter                            - OK   
+- Primeira letra da tarefa sempre em uppercase - OK
 */
 
 // Seleção de elementos
-const todoForm = document.querySelector('#todo-form');
-const todoInput = document.querySelector("#todo-input");
-const todoList = document.querySelector("#todo-list");
-const editForm = document.querySelector("#edit-form");
-const editInput = document.querySelector("#edit-input");
+const todoForm      = document.querySelector('#todo-form');
+const todoInput     = document.querySelector("#todo-input");
+const todoList      = document.querySelector("#todo-list");
+const editForm      = document.querySelector("#edit-form");
+const editInput     = document.querySelector("#edit-input");
 const cancelEditBtn = document.querySelector("#cancel-edit-btn");
-const searchInput = document.querySelector("#search-input");
-const eraseBtn = document.querySelector("#erase-button");
-const filterBtn = document.querySelector("#filter-select");
+const searchInput   = document.querySelector("#search-input");
+const eraseBtn      = document.querySelector("#erase-button");
+const filterBtn     = document.querySelector("#filter-select");
 
 let oldInputValue;
 
 // Funções 
-function limpaInput () {
+const clearInput = () => {
     todoInput.value = '';
     todoInput.focus();
-}
+};
 
-const salvarTodo = (text) => {
+const saveTodo = (text, done = 0, save = 1) => {
+
+    todoInput.style.border = '2px solid var(--color-yellow)';
 
     // cria div com a classe todo
     const todo = document.createElement('div');
@@ -60,42 +62,66 @@ const salvarTodo = (text) => {
     deleteBtn.innerHTML = '<i class="fa-solid fa-xmark"></i>';
     todo.appendChild(deleteBtn);
 
+    // Utilizando dados da localStorage
+    if (done) {
+        todo.classList.add("done");
+    }
+
+    if (save) {
+        saveTodoLocalStorage({ text, done: 0 });
+    }
+
     // coloca a div (todo) dentro da div (todoList)
     todoList.appendChild(todo);
 
     // chama essa função para limpar o input
-    limpaInput();
-}
+    clearInput();
+};
 
-const alternarForms = () => {
+const toggleForms = () => {
     editForm.classList.toggle('hide');
     todoForm.classList.toggle('hide');
     todoList.classList.toggle('hide');
-}
+};
 
-const atualizarTodo = (text) => {
+const updateTodo = (text) => {
 
     const todos = document.querySelectorAll('.todo');
 
     todos.forEach((todo) => {
-        
+
         let todoTitle = todo.querySelector('h4');
 
         if (todoTitle.innerText === oldInputValue) {
             todoTitle.innerText = text;
         }
     });
-}
+};
+
+// const getSearchedTodos = (search) => {
+
+// };
+
+// const filterTodos = (filterValue) => {
+
+// };
 
 // Eventos
+// Salvar todo
 todoForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    
+
     const inputValue = todoInput.value;
-    
-    if (inputValue) {
-        salvarTodo(inputValue);
+
+    if (!todoInput.value) {
+        todoInput.style.border = '2px solid red';
+        alert('Digite algo para inserir na sua lista de tarefas!');
+
+        return;
+    } else if (inputValue) {
+        saveTodo(inputValue);
     }
+
 });
 
 document.addEventListener('click', (e) => {
@@ -104,16 +130,16 @@ document.addEventListener('click', (e) => {
     let todoTitle;
 
     if (parentEl && parentEl.querySelector('h4')) {
-        todoTitle = parentEl.querySelector('h4').innerText;       
+        todoTitle = parentEl.querySelector('h4').innerText || '';
     }
 
     // btns finalizar, editar e remover tarefa
     if (targetEl.classList.contains('finish-todo')) {
-        parentEl.classList.toggle('done'); //poderia usar add, mas o mais adequado é o toggle
+        parentEl.classList.toggle('done');
     }
 
     if (targetEl.classList.contains('edit-todo')) {
-        alternarForms();
+        toggleForms();
 
         editInput.value = todoTitle;
         oldInputValue = todoTitle;
@@ -128,17 +154,43 @@ document.addEventListener('click', (e) => {
 cancelEditBtn.addEventListener('click', (e) => {
     e.preventDefault();
 
-    alternarForms();
+    toggleForms();
 });
 
+// btn editar tarefa
 editForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
     const editInputValue = editInput.value;
 
     if (editInputValue) {
-        atualizarTodo(editInputValue);
+        updateTodo(editInputValue);
     }
 
-    alternarForms();
+    toggleForms();
 });
+
+// Local Storage
+const getTodosLocalStorage = () => {
+    const todos = JSON.parse(localStorage.getItem("todos")) || [];
+
+    return todos;
+};
+
+const loadTodos = () => {
+    const todos = getTodosLocalStorage();
+
+    todos.forEach((todo) => {
+        saveTodo(todo.text, todo.done, 0);
+    });
+};
+
+const saveTodoLocalStorage = (todo) => {
+    const todos = getTodosLocalStorage();
+
+    todos.push(todo);
+
+    localStorage.setItem("todos", JSON.stringify(todos));
+};
+
+loadTodos();
