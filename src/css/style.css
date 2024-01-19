@@ -1,0 +1,144 @@
+/* Geral */
+:root {
+    --color-background: #646464;
+    --color-black: #000000;
+    --color-yellow: #FEE45A;
+    --color-btn: #fdfdfd;
+}
+
+body {
+    background-color: whitesmoke;
+    color: #333;
+}
+
+body.modo-escuro {
+    background-color: var(--color-black);
+    /* color: white; */
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px;
+}
+
+header img {
+    width: 30px;
+    padding: 2px;
+    border-radius: 1rem;
+    height: 50px;
+    width: 50px;
+    transition: 0.2s ease-in-out;
+}
+
+header .logo {
+    background-color: var(--color-yellow);
+    border-radius: 10px;
+}
+
+header img:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+header #botao-alterar-tema {
+    background: none;
+    border: none;
+}
+
+header h1 {
+    font-size: 22px;
+    text-transform: uppercase;
+}
+
+/* todo-form */
+button {
+    background-color: var(--color-btn);
+    color: var(--color-yellow);
+    border: 2px solid var(--color-yellow);
+    padding: 0.3rem 0.6rem;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.4s;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: var(--color-yellow);
+    color: var(--color-btn);
+}
+
+button:hover>i {
+    color: var(--color-btn);
+}
+
+button i {
+    pointer-events: none;
+    color: var(--color-yellow);
+    font-weight: bold;
+}
+
+input,
+select {
+    padding: 0.25rem 0.5rem;
+}
+
+.hide {
+    /* display: none; */
+}
+
+/* todo header */
+.todo-container {
+    max-width: 450px;
+    margin: 3rem auto;
+    background-color: var(--color-btn);
+    padding: 1.5rem;
+    border-radius: 15px;
+}
+
+.todo-container header {
+    text-align: center;
+    padding: 0 1rem 1rem;
+    border-bottom: 1px solid whitesmoke;
+}
+
+/* Todo forms */
+#todo-form,
+#edit-form {
+    padding: 1rem;
+    border-bottom: 1px solid whitesmoke;
+}
+
+#todo-form h2, #edit-form h2 {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.form-control {
+    display: flex;
+}
+
+input {
+    border: 2px solid var(--color-yellow);
+    border-radius: 10px;
+    color: var(--color-yellow);
+}
+
+input:hover {
+    color: #000000;
+    background-color: var(--color-yellow);
+}
+
+.form-control input {
+    margin-right: 0.3rem;
+}
+
+#cancel-edit-btn {
+    margin-top: 1rem;
+}
