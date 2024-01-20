@@ -102,9 +102,19 @@ const updateTodo = (text) => {
     });
 };
 
-// const getSearchedTodos = (search) => {
+const getSearchedTodos = (search) => {
+    const todos = document.querySelectorAll(".todo");
 
-// };
+    todos.forEach((todo) => {
+        const todoTitle = todo.querySelector("h4").innerText.toLowerCase();
+
+        todo.style.display = "flex";
+
+        if (!todoTitle.includes(search)) {
+            todo.style.display = "none";
+        }
+    });
+};
 
 // const filterTodos = (filterValue) => {
 
@@ -178,6 +188,12 @@ editForm.addEventListener('submit', (e) => {
     }
 
     toggleForms();
+});
+
+searchInput.addEventListener("keyup", (e) => {
+    const search = e.target.value;
+
+    getSearchedTodos(search);
 });
 
 // Local Storage
