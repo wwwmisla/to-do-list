@@ -8,12 +8,12 @@
 
 ## Índice
 
-- [Título e Imagem de capa](#To-Do-List)
-- [Descrição do projeto](#Descrição-do-projeto)
-- [Tecnologias Utilizadas](#Tecnologias-Utilizadas)
-- [Deploy](#Deploy)
-- [Funcionalidades](#Funcionalidades)
-- [Desenvolvido](#Projeto-Desenvolvido-Por)
+- [Título e Imagem de capa](#to-do-list)
+- [Descrição do projeto](#-descrição-do-projeto)
+- [Tecnologias Utilizadas](#-tecnologias-utilizadas)
+- [Deploy](#-deploy)
+- [Funcionalidades](#%EF%B8%8F-funcionalidades)
+- [Desenvolvido](#-projeto-desenvolvido-por-)
 
 </div>
 
@@ -24,7 +24,7 @@
 
 Uma simples To-Do List feita com o intuito de fixar o conteúdo sobre funções de JavaScript.
 
-## 🛠 Tecnologias usadas
+## 🛠 Tecnologias Utilizadas
 
 <div align="center">
   <img align="center" alt="Misla-HTML" height="50" width="60" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg">
@@ -38,19 +38,19 @@ Usei a própria ferramenta de deploy do GitHub, <a href= "https://wwwmisla.githu
 
 ## 🗂️ Funcionalidades
 
-- Inserir tarefa                               - [x]
-- Salvar tarefa                                - [x]
-- Deletar uma tarefa                           - [x]
-- Deletar todas as tarefas                     - [x]
-- Marcar tarefa como concluída                 - [x]
-- Editar tarefa                                - [x]
-- Limitar quantidade de tarefa                 - [x]
-- Não pode repetir o nome                      - [x]
-- Não pode enviar vazio                        - [x]
-- Enviar pelo enter                            - [x]   
-- Primeira letra da tarefa sempre em uppercase - [x]
-- Pesquisar por título                         - [x]
-- Filtrar                                      - [x]
+- [x] Inserir tarefa                               
+- [x] Salvar tarefa                                
+- [x] Deletar uma tarefa                           
+- [x] Deletar todas as tarefas                     
+- [x] Marcar tarefa como concluída                 
+- [x] Editar tarefa                                
+- [x] Limitar quantidade de tarefa                 
+- [x] Não pode repetir o nome                      
+- [x] Não pode enviar vazio                        
+- [x] Enviar pelo enter                            
+- [x] Primeira letra da tarefa sempre em uppercase 
+- [x] Pesquisar por título                         
+- [x] Filtrar                                      
 
 ## 🚧 Projeto Desenvolvido Por 🚧
-`Misla Wislaine` ![Badge Desenvolvido](http://img.shields.io/static/v1?label=STATUS&message=Desenvoldio&color=GREEN&style=for-the-badge)
+`Misla Wislaine` 
