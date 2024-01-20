@@ -12,6 +12,8 @@
 - [Descrição do projeto](#Descrição-do-projeto)
 - [Tecnologias Utilizadas](#Tecnologias-Utilizadas)
 - [Deploy](#Deploy)
+- [Funcionalidades](#Funcionalidades)
+- [Desenvolvido](#Projeto-Desenvolvido-Por)
 
 </div>
 
@@ -34,22 +36,21 @@ Uma simples To-Do List feita com o intuito de fixar o conteúdo sobre funções 
  
 Usei a própria ferramenta de deploy do GitHub, <a href= "https://wwwmisla.github.io/to-do-list/" target="_blank"> Clique Aqui </a> para ver o projeto.
 
-### Observação
+## 🗂️ Funcionalidades
 
-O projeto ainda está em desenvolvimento.
+- Inserir tarefa                               - [x]
+- Salvar tarefa                                - [x]
+- Deletar uma tarefa                           - [x]
+- Deletar todas as tarefas                     - [x]
+- Marcar tarefa como concluída                 - [x]
+- Editar tarefa                                - [x]
+- Limitar quantidade de tarefa                 - [x]
+- Não pode repetir o nome                      - [x]
+- Não pode enviar vazio                        - [x]
+- Enviar pelo enter                            - [x]   
+- Primeira letra da tarefa sempre em uppercase - [x]
+- Pesquisar por título                         - [x]
+- Filtrar                                      - [x]
 
-#### Funcionalidades
-
-- Inserir tarefa                               - OK
-- Salvar tarefa                                - OK
-- Deletar uma tarefa                           - OK
-- Deletar todas as tarefas                     - 
-- Marcar tarefa como concluída                 - OK
-- Editar tarefa                                - OK
-- Limitar quantidade de tarefa                 - 
-- Não pode repetir o nome                      - 
-- Não pode enviar vazio                        - OK
-- Enviar pelo enter                            - OK   
-- Primeira letra da tarefa sempre em uppercase - 
-- Pesquisar por título                         - OK
-- Filtrar                                      - OK
+## 🚧 Projeto Desenvolvido Por 🚧
+`Misla Wislaine` ![Badge Desenvolvido](http://img.shields.io/static/v1?label=STATUS&message=Desenvoldio&color=GREEN&style=for-the-badge)
