@@ -1,27 +1,14 @@
-/* 
-- Inserir tarefa                               - OK
-- Salvar tarefa                                - OK
-- Deletar uma tarefa                           - OK
-- Deletar todas as tarefas                     - 
-- Marcar como concluída                        - OK
-- Editar                                       - OK
-- Limitar quantidade de tarefa                 - 
-- Não pode repetir o nome                      - 
-- Não pode enviar vazio                        - OK
-- Enviar pelo enter                            - OK   
-- Primeira letra da tarefa sempre em uppercase - 
-*/
-
 // Seleção de elementos
-const todoForm      = document.querySelector('#todo-form');
-const todoInput     = document.querySelector("#todo-input");
-const todoList      = document.querySelector("#todo-list");
-const editForm      = document.querySelector("#edit-form");
-const editInput     = document.querySelector("#edit-input");
+const todoForm = document.querySelector('#todo-form');
+const todoInput = document.querySelector("#todo-input");
+const todoList = document.querySelector("#todo-list");
+const editForm = document.querySelector("#edit-form");
+const editInput = document.querySelector("#edit-input");
 const cancelEditBtn = document.querySelector("#cancel-edit-btn");
-const searchInput   = document.querySelector("#search-input");
-const eraseBtn      = document.querySelector("#erase-button");
-const filterBtn     = document.querySelector("#filter-select");
+const searchInput = document.querySelector("#search-input");
+const eraseBtn = document.querySelector("#erase-button");
+const filterBtn = document.querySelector("#filter-select");
+const deleteAllBtn = document.querySelector("#delete-all");
 
 let oldInputValue;
 
@@ -35,29 +22,28 @@ const saveTodo = (text, done = 0, save = 1) => {
 
     todoInput.style.border = '2px solid var(--color-yellow)';
 
-    // cria div com a classe todo
+    // Cria div com a classe todo
     const todo = document.createElement('div');
     todo.classList.add('todo');
 
-    // cria h4 com o text (título da tarefa) que vai para dentro da div
+    // Cria h4 com o text (título da tarefa) que vai para dentro da div
     const todoTitle = document.createElement('h4');
     todoTitle.innerText = text;
-    // todoTitle.style.textTransform = 'capitalize';
     todo.appendChild(todoTitle);
 
-    // cria btn para finalizar tarefa que vai para dentro da div
+    // Cria btn para finalizar tarefa que vai para dentro da div
     const doneBtn = document.createElement('button');
     doneBtn.classList.add('finish-todo');
     doneBtn.innerHTML = '<i class="fa-solid fa-check"></i>';
     todo.appendChild(doneBtn);
 
-    // cria btn para editar tarefa que vai para dentro da div
+    // Cria btn para editar tarefa que vai para dentro da div
     const editBtn = document.createElement('button');
     editBtn.classList.add('edit-todo');
     editBtn.innerHTML = '<i class="fa-solid fa-pen"></i>';
     todo.appendChild(editBtn);
 
-    // cria btn para deletar tarefa que vai para dentro da div
+    // Cria btn para deletar tarefa que vai para dentro da div
     const deleteBtn = document.createElement('button');
     deleteBtn.classList.add('remove-todo');
     deleteBtn.innerHTML = '<i class="fa-solid fa-xmark"></i>';
@@ -72,10 +58,10 @@ const saveTodo = (text, done = 0, save = 1) => {
         saveTodoLocalStorage({ text, done: 0 });
     }
 
-    // coloca a div (todo) dentro da div (todoList)
+    // Coloca a div (todo) dentro da div (todoList)
     todoList.appendChild(todo);
 
-    // chama essa função para limpar o input
+    // Chama essa função para limpar o input
     clearInput();
 };
 
@@ -116,9 +102,37 @@ const getSearchedTodos = (search) => {
     });
 };
 
-// const filterTodos = (filterValue) => {
+const filterTodos = (filterValue) => {
+    const todos = document.querySelectorAll(".todo");
 
-// };
+    switch (filterValue) {
+        case "all":
+            todos.forEach((todo) => (todo.style.display = "flex"));
+
+            break;
+
+        case "done":
+            todos.forEach((todo) =>
+                todo.classList.contains("done")
+                    ? (todo.style.display = "flex")
+                    : (todo.style.display = "none")
+            );
+
+            break;
+
+        case "todo":
+            todos.forEach((todo) =>
+                !todo.classList.contains("done")
+                    ? (todo.style.display = "flex")
+                    : (todo.style.display = "none")
+            );
+
+            break;
+
+        default:
+            break;
+    }
+};
 
 // Eventos
 // Salvar todo
@@ -147,7 +161,7 @@ document.addEventListener('click', (e) => {
         todoTitle = parentEl.querySelector('h4').innerText || '';
     }
 
-    // btns finalizar, editar e remover tarefa
+    // Btns finalizar, editar e remover tarefa
     if (targetEl.classList.contains('finish-todo')) {
         parentEl.classList.toggle('done');
 
@@ -163,21 +177,21 @@ document.addEventListener('click', (e) => {
     }
 
     if (targetEl.classList.contains('remove-todo')) {
-        parentEl.remove();        
+        parentEl.remove();
 
         // Utilizando dados da localStorage
         removeTodoLocalStorage(todoTitle);
     }
 });
 
-// btn cancelar edição de tarefa
+// Btn cancelar edição de tarefa
 cancelEditBtn.addEventListener('click', (e) => {
     e.preventDefault();
 
     toggleForms();
 });
 
-// btn editar tarefa
+// Btn editar tarefa
 editForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -194,6 +208,20 @@ searchInput.addEventListener("keyup", (e) => {
     const search = e.target.value;
 
     getSearchedTodos(search);
+});
+
+eraseBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    searchInput.value = "";
+
+    searchInput.dispatchEvent(new Event("keyup"));
+});
+
+filterBtn.addEventListener("change", (e) => {
+    const filterValue = e.target.value;
+
+    filterTodos(filterValue);
 });
 
 // Local Storage
@@ -246,5 +274,16 @@ const updateTodoLocalStorage = (todoOldText, todoNewText) => {
 
     localStorage.setItem("todos", JSON.stringify(todos));
 };
+
+const removeAllTodoLocalStorage = () => {
+    let todos = getTodosLocalStorage();
+    todos = [];
+
+    localStorage.setItem("todos", JSON.stringify(todos));
+}
+
+deleteAllBtn.addEventListener('click', (e) => {
+    removeAllTodoLocalStorage();
+});
 
 loadTodos();

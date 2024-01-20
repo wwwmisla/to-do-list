@@ -37,3 +37,19 @@ Usei a própria ferramenta de deploy do GitHub, <a href= "https://wwwmisla.githu
 ### Observação
 
 O projeto ainda está em desenvolvimento.
+
+#### Funcionalidades
+
+- Inserir tarefa                               - OK
+- Salvar tarefa                                - OK
+- Deletar uma tarefa                           - OK
+- Deletar todas as tarefas                     - 
+- Marcar tarefa como concluída                 - OK
+- Editar tarefa                                - OK
+- Limitar quantidade de tarefa                 - 
+- Não pode repetir o nome                      - 
+- Não pode enviar vazio                        - OK
+- Enviar pelo enter                            - OK   
+- Primeira letra da tarefa sempre em uppercase - 
+- Pesquisar por título                         - OK
+- Filtrar                                      - OK
