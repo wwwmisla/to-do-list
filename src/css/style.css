@@ -253,3 +253,16 @@ body.modo-escuro .done {
     text-decoration: line-through;
     font-style: italic;
 }
+
+.delete-all {
+    padding: 1rem;
+    border-bottom: 1px solid whitesmoke;
+    display: flex;
+}
+
+#delete-all {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
