@@ -42,6 +42,7 @@ const saveTodo = (text, done = 0, save = 1) => {
     // cria h4 com o text (título da tarefa) que vai para dentro da div
     const todoTitle = document.createElement('h4');
     todoTitle.innerText = text;
+    // todoTitle.style.textTransform = 'capitalize';
     todo.appendChild(todoTitle);
 
     // cria btn para finalizar tarefa que vai para dentro da div
@@ -146,7 +147,10 @@ document.addEventListener('click', (e) => {
     }
 
     if (targetEl.classList.contains('remove-todo')) {
-        parentEl.remove();
+        parentEl.remove();        
+
+        // Utilizando dados da localStorage
+        removeTodoLocalStorage(todoTitle);
     }
 });
 
@@ -191,6 +195,14 @@ const saveTodoLocalStorage = (todo) => {
     todos.push(todo);
 
     localStorage.setItem("todos", JSON.stringify(todos));
+};
+
+const removeTodoLocalStorage = (todoText) => {
+    const todos = getTodosLocalStorage();
+
+    const filteredTodos = todos.filter((todo) => todo.text != todoText);
+
+    localStorage.setItem("todos", JSON.stringify(filteredTodos));
 };
 
 loadTodos();

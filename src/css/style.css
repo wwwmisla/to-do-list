@@ -233,7 +233,7 @@ body.modo-escuro .todo {
 .todo h4 {
     flex: 1;
     font-size: 0.9rem;
-    text-transform: capitalize;
+    /* text-transform: capitalize; */
 }
 
 .todo button {
