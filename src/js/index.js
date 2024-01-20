@@ -34,18 +34,21 @@ const saveTodo = (text, done = 0, save = 1) => {
     // Cria btn para finalizar tarefa que vai para dentro da div
     const doneBtn = document.createElement('button');
     doneBtn.classList.add('finish-todo');
+    doneBtn.setAttribute('title', 'Concluir tarefa');
     doneBtn.innerHTML = '<i class="fa-solid fa-check"></i>';
     todo.appendChild(doneBtn);
 
     // Cria btn para editar tarefa que vai para dentro da div
     const editBtn = document.createElement('button');
     editBtn.classList.add('edit-todo');
+    editBtn.setAttribute('title', 'Editar tarefa');
     editBtn.innerHTML = '<i class="fa-solid fa-pen"></i>';
     todo.appendChild(editBtn);
 
     // Cria btn para deletar tarefa que vai para dentro da div
     const deleteBtn = document.createElement('button');
     deleteBtn.classList.add('remove-todo');
+    deleteBtn.setAttribute('title', 'Apagar tarefa');
     deleteBtn.innerHTML = '<i class="fa-solid fa-xmark"></i>';
     todo.appendChild(deleteBtn);
 

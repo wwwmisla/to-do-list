@@ -223,11 +223,21 @@ body.modo-escuro #search {
     align-items: center;
     padding: 1rem;
     border-bottom: 1px solid whitesmoke;
-    transition: 0.3s;
+    transition: 0.3s ease-in-out;
+}
+
+.todo:hover {
+    background-color: rgba(245, 245, 245, 0.822);
+    transform: scale(1.05);
+    border-radius: 10px;
 }
 
 body.modo-escuro .todo {
     border-bottom: 1px solid rgb(37, 37, 37);
+}
+
+body.modo-escuro .todo:hover {
+    background-color: rgba(37, 37, 37, 0.781);
 }
 
 .todo h4 {
@@ -258,6 +268,10 @@ body.modo-escuro .done {
     padding: 1rem;
     border-bottom: 1px solid whitesmoke;
     display: flex;
+}
+
+body.modo-escuro .delete-all {
+    border-bottom: 1px solid rgb(37, 37, 37);
 }
 
 #delete-all {
