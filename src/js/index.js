@@ -1,15 +1,15 @@
 /* 
 - Inserir tarefa                               - OK
 - Salvar tarefa                                - OK
-- Deletar uma tarefa                           - 
+- Deletar uma tarefa                           - OK
 - Deletar todas as tarefas                     - 
-- Marcar como concluída                        - 
-- Editar                                       - 
+- Marcar como concluída                        - OK
+- Editar                                       - OK
 - Limitar quantidade de tarefa                 - 
 - Não pode repetir o nome                      - 
 - Não pode enviar vazio                        - OK
 - Enviar pelo enter                            - OK   
-- Primeira letra da tarefa sempre em uppercase - OK
+- Primeira letra da tarefa sempre em uppercase - 
 */
 
 // Seleção de elementos
@@ -95,6 +95,9 @@ const updateTodo = (text) => {
 
         if (todoTitle.innerText === oldInputValue) {
             todoTitle.innerText = text;
+
+            // Utilizando dados da localStorage
+            updateTodoLocalStorage(oldInputValue, text);
         }
     });
 };
@@ -213,6 +216,16 @@ const updateTodoStatusLocalStorage = (todoText) => {
 
     todos.map((todo) =>
         todo.text === todoText ? (todo.done = !todo.done) : null
+    );
+
+    localStorage.setItem("todos", JSON.stringify(todos));
+};
+
+const updateTodoLocalStorage = (todoOldText, todoNewText) => {
+    const todos = getTodosLocalStorage();
+
+    todos.map((todo) =>
+        todo.text === todoOldText ? (todo.text = todoNewText) : null
     );
 
     localStorage.setItem("todos", JSON.stringify(todos));
