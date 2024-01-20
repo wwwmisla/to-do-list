@@ -243,7 +243,6 @@ body.modo-escuro .todo:hover {
 .todo h4 {
     flex: 1;
     font-size: 0.9rem;
-    /* text-transform: capitalize; */
 }
 
 .todo button {
@@ -264,13 +263,13 @@ body.modo-escuro .done {
     font-style: italic;
 }
 
-.delete-all {
+.delete-all-div {
     padding: 1rem;
     border-bottom: 1px solid whitesmoke;
     display: flex;
 }
 
-body.modo-escuro .delete-all {
+body.modo-escuro .delete-all-div {
     border-bottom: 1px solid rgb(37, 37, 37);
 }
 
