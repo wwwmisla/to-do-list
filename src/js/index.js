@@ -137,6 +137,13 @@ const filterTodos = (filterValue) => {
     }
 };
 
+function validateIfExistsNewTodo() {
+    let values = getTodosLocalStorage();
+    let inputValue = document.querySelector('#todo-input').value;
+    let exists = values.find(x => x.text === inputValue);
+    return !exists ? false : true;
+}
+
 // Eventos
 // Salvar todo
 todoForm.addEventListener('submit', (e) => {
@@ -149,10 +156,17 @@ todoForm.addEventListener('submit', (e) => {
         alert('Digite algo para inserir na sua lista de tarefas!');
 
         return;
-    } else if (inputValue) {
-        saveTodo(inputValue);
-    }
+    } else if (getTodosLocalStorage().length >= 20) {
+        alert('Número máximo de tarefas atingido!');
 
+        return;
+    } else if (validateIfExistsNewTodo()) {
+        alert('Essa descrição já existe, tente outra!');
+
+        return;
+    } else if (inputValue) {
+        saveTodo(inputValue.charAt(0).toUpperCase() + inputValue.substring(1));
+    }
 });
 
 document.addEventListener('click', (e) => {
@@ -185,6 +199,16 @@ document.addEventListener('click', (e) => {
         // Utilizando dados da localStorage
         removeTodoLocalStorage(todoTitle);
     }
+
+    if (targetEl.classList.contains('delete-all')) {
+        e.preventDefault();
+
+        while (todoList.hasChildNodes()) {
+            todoList.removeChild(todoList.firstChild);
+        }
+
+        removeAllTodoLocalStorage();
+    }
 });
 
 // Btn cancelar edição de tarefa
@@ -207,21 +231,21 @@ editForm.addEventListener('submit', (e) => {
     toggleForms();
 });
 
-searchInput.addEventListener("keyup", (e) => {
+searchInput.addEventListener('keyup', (e) => {
     const search = e.target.value;
 
     getSearchedTodos(search);
 });
 
-eraseBtn.addEventListener("click", (e) => {
+eraseBtn.addEventListener('click', (e) => {
     e.preventDefault();
 
-    searchInput.value = "";
+    searchInput.value = '';
 
-    searchInput.dispatchEvent(new Event("keyup"));
+    searchInput.dispatchEvent(new Event('keyup'));
 });
 
-filterBtn.addEventListener("change", (e) => {
+filterBtn.addEventListener('change', (e) => {
     const filterValue = e.target.value;
 
     filterTodos(filterValue);
@@ -258,6 +282,13 @@ const removeTodoLocalStorage = (todoText) => {
     localStorage.setItem("todos", JSON.stringify(filteredTodos));
 };
 
+const removeAllTodoLocalStorage = () => {
+    let todos = getTodosLocalStorage();
+    todos = [];
+
+    localStorage.setItem('todos', JSON.stringify(todos));
+};
+
 const updateTodoStatusLocalStorage = (todoText) => {
     const todos = getTodosLocalStorage();
 
@@ -277,16 +308,5 @@ const updateTodoLocalStorage = (todoOldText, todoNewText) => {
 
     localStorage.setItem("todos", JSON.stringify(todos));
 };
-
-const removeAllTodoLocalStorage = () => {
-    let todos = getTodosLocalStorage();
-    todos = [];
-
-    localStorage.setItem("todos", JSON.stringify(todos));
-}
-
-deleteAllBtn.addEventListener('click', (e) => {
-    removeAllTodoLocalStorage();
-});
 
 loadTodos();
