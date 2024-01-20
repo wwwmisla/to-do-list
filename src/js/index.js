@@ -137,6 +137,9 @@ document.addEventListener('click', (e) => {
     // btns finalizar, editar e remover tarefa
     if (targetEl.classList.contains('finish-todo')) {
         parentEl.classList.toggle('done');
+
+        // Utilizando dados da localStorage
+        updateTodoStatusLocalStorage(todoTitle);
     }
 
     if (targetEl.classList.contains('edit-todo')) {
@@ -203,6 +206,16 @@ const removeTodoLocalStorage = (todoText) => {
     const filteredTodos = todos.filter((todo) => todo.text != todoText);
 
     localStorage.setItem("todos", JSON.stringify(filteredTodos));
+};
+
+const updateTodoStatusLocalStorage = (todoText) => {
+    const todos = getTodosLocalStorage();
+
+    todos.map((todo) =>
+        todo.text === todoText ? (todo.done = !todo.done) : null
+    );
+
+    localStorage.setItem("todos", JSON.stringify(todos));
 };
 
 loadTodos();
